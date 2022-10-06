@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'New Supplier' %}
+
+
+{% block body %}
+
+	<div class="row">
+		<div class="col-md-6 mx-auto">
+
+			<h1>
+				Create Supplier</h1>
+
+			{{ form_start(formSuppliers)}}
+
+			{{ form_widget(formSuppliers)}}
+
+			<input type="submit" value="Create Supplier" class="btn btn-primary">
+			{{ form_end(formSuppliers)}}
+
+		</div>
+	</div>
+
+
+{% endblock %}

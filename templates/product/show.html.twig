@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title product.nameProduct %}
+
+
+{% block body %}
+	<div class="row">
+		<div class="col mx-auto">
+			<article>
+
+				<article class="bg-white rounded shadow post">
+
+					<h2 class="h5 ps-5 pt-3 text-secondary text-muted">{{ product.nameProduct }}</h2>
+					<h2 class="h5 ps-5 pt-3 text-secondary text-muted">{{ product.price }}</h2>
+					<h3 class="h6 ps-5 pt-3 text-secondary text-muted">{{ product.quantityStock }}</h3>
+					<h3 class="h6 ps-5 pt-3 text-secondary text-muted">{{ product.securityStock }}
+						<h3 class="h6 ps-5 pt-3 text-secondary text-muted">{{ product.quantitySold }}
+						</div>
+						<div class="ps-3 pb-3">
+							<a href="{{ path('app_product_edit',{id: product.id}) }}" class="btn btn-light">Edit</a>
+							<a href="#" onclick="event.preventDefault(); confirm('Are you sure?') && document.getElementById('js-product-delete-form').submit(); " class="btn btn-light">Delete</a>
+						</div>
+					</article>
+				</div>
+			</div>
+
+
+			<form id="js-product-delete-form" action="{{ path('app_product_delete',{id: product.id}) }}" method="post" style="display:none;">
+				<input type="hidden" name="csrf_token" value="{{ csrf_token('product_deletion'~ product.id) }}">
+				<input type="hidden" name="_method" value="DELETE">
+			</form>
+		{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title inventory.reference %}
+
+
+{% block body %}
+	<div class="row">
+		<div class="col mx-auto">
+			<article>
+
+				<article class="bg-white rounded shadow post">
+
+					<h2 class="h5 ps-5 pt-3 text-secondary text-muted">{{ inventory.reference }}</h2>
+					<h3 class="h6 ps-5 pt-3 text-secondary text-muted">{{ inventory.date|date('Y-m-d') }}</h3>
+
+					<div class="ps-3 pb-3">
+						<a href="{{ path('app_inventory_edit',{id: inventory.id}) }}" class="btn btn-light">Edit</a>
+						<a href="#" onclick="event.preventDefault(); confirm('Are you sure?') && document.getElementById('js-inventory-delete-form').submit(); " class="btn btn-light">Delete</a>
+					</div>
+				</article>
+			</div>
+		</div>
+
+		<form id="js-inventory-delete-form" action="{{ path('app_inventory_delete',{id: inventory.id}) }}" method="post" style="display:none;">
+			<input type="hidden" name="csrf_token" value="{{ csrf_token('inventory_deletion'~ inventory.id) }}">
+			<input type="hidden" name="_method" value="DELETE">
+		</form>
+	{% endblock %}

@@ -1,0 +1,74 @@
+{% if app.user %}
+	<div class="d-flex flex-column flex-shrink-0 p-3 bg-lightgray" style="width: 280px;">
+		<ul class="nav nav-pills flex-column mb-auto">
+			<li class="nav-item">
+				<a href="#" class="nav-link link-dark"></br>
+			</li>
+		</a>
+	</li>
+	<li>
+		<a href="/dashboard" class="nav-link link-dark">
+			Dashboard
+		</a>
+	</li>
+	<li>
+		<div class="dropdown">
+			<a href="#" class="nav-link link-dark dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+				Entity
+			</a>
+			<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
+				<li>
+					<a class="dropdown-item" href="/product">Products</a>
+				</li>
+				<li>
+					<a class="dropdown-item" href="/category">Categories</a>
+				</li>
+				<li>
+					<a class="dropdown-item" href="/client">Clients</a>
+				</li>
+				<li>
+					<a class="dropdown-item" href="/supplier">Suppliers</a>
+				</li>
+				<li>
+					<a class="dropdown-item" href="/vehicle">Vehicles</a>
+				</li>
+			</ul>
+		</div>
+	</li>
+	<li>
+		<div class="dropdown">
+			<a href="#" class="nav-link link-dark dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+				Import
+			</a>
+			<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+				<li>
+					<a class="dropdown-item" href="/commande">Orders</a>
+				</li>
+				<li>
+					<a class="dropdown-item" href="/receival">Receivals</a>
+				</li>
+				<li>
+					<a class="dropdown-item" href="/stockage">Stockage</a>
+				</li>
+			</ul>
+		</div>
+		<div class="dropdown">
+			<a href="#" class="nav-link link-dark dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
+				Export
+			</a>
+			<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
+				<li>
+					<a class="dropdown-item" href="/deliveryorder">Orders</a>
+				</li>
+				<li>
+					<a class="dropdown-item" href="/delivery">Deliveries</a>
+				</li>
+			</ul>
+		</div>
+	</li>
+	<li>
+		<a href="/inventory" class="nav-link link-dark">
+			Inventory
+		</a>
+	</li>
+</ul></div>{% endif %}

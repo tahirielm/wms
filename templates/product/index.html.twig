@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Warehouse Management System' %}
+
+
+{% block body %}
+
+	<div class="">
+		<h1 class="text-center">Products</h1>
+		<a
+			class="btn btn-success" style="float:right;" href="{{ path('app_product_create') }}">
+			{# <i class="fas fa-pencil-alt mt-0"></i> #}
+			New Product
+		</a>
+	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Product Name</th>
+				<th scope="col">Category Name</th>
+				<th scope="col">Price (Dhs)</th>
+				<th scope="col">Quantity In Stock</th>
+				<th scope="col">Security Quantity</th>
+				<th scope="col">Quantity Sold</th>
+				<th scope="col">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for p in products %}
+				<tr>
+					<th scope="row">{{ products[loop.index0].id }}</th>
+					<td>{{ products[loop.index0].nameProduct }}</td>
+					<td>{{ products[loop.index0].category }}</td>
+					<td>{{ products[loop.index0].price }}</td>
+					<td>{{ products[loop.index0].quantityStock }}</td>
+					<td>{{ products[loop.index0].securityStock }}</td>
+					<td>{{ products[loop.index0].quantitySold }}</td>
+					<td>
+						<a class="btn btn-primary" href="{{ path('app_product_edit',{id: products[loop.index0].id}) }}">Edit</a>
+						{# <a class="btn btn-danger" href="{{ path('app_product_delete',{id: products[loop.index0].id}) }}">Delete</a> #}
+						<a class="btn btn-danger" href="#" onclick="event.preventDefault(); confirm('Are you sure?') && document.getElementById('js-product-delete-form').submit(); " class="btn btn-light">Delete</a>
+						<form id="js-product-delete-form" action="{{ path('app_product_delete',{id: products[loop.index0].id}) }}" method="post" style="display:none;">
+							<input type="hidden" name="csrf_token" value="{{ csrf_token('product_deletion'~ products[loop.index0].id) }}">
+							<input type="hidden" name="_method" value="DELETE">
+						</form>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+</div>{% endblock %}

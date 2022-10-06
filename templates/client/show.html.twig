@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title client.name %}
+
+
+{% block body %}
+	<div class="row">
+		<div class="col mx-auto">
+			<article>
+
+				<article class="bg-white rounded shadow post">
+
+					<h2 class="h5 ps-5 pt-3 text-secondary text-muted">{{ client.name }}</h2>
+					<h3 class="h6 ps-5 pt-3 text-secondary text-muted">{{ client.adress }}</h3>
+					<h3 class="h6 ps-5 pt-3 text-secondary text-muted">{{ client.phone }}</h3>
+					<h3 class="h6 ps-5 pt-3 text-secondary text-muted">{{ client.email }}</h3>
+				</div>
+				<div class="ps-3 pb-3">
+					<a href="{{ path('app_client_edit',{id: client.id}) }}" class="btn btn-light">Edit</a>
+					<a href="#" onclick="event.preventDefault(); confirm('Are you sure?') && document.getElementById('js-client-delete-form').submit(); " class="btn btn-light">Delete</a>
+				</div>
+			</article>
+		</div>
+	</div>
+
+
+	<form id="js-client-delete-form" action="{{ path('app_client_delete',{id: client.id}) }}" method="post" style="display:none;">
+		<input type="hidden" name="csrf_token" value="{{ csrf_token('client_deletion'~ client.id) }}">
+		<input type="hidden" name="_method" value="DELETE">
+	</form>
+{% endblock %}

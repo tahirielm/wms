@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Warehouse Management System' %}
+
+
+{% block body %}
+
+	<div class="">
+		<h1 class="text-center">Categories</h1>
+		<a
+			class="btn btn-success" style="float:right;" href="{{ path('app_category_create') }}">
+			{# <i class="fas fa-pencil-alt mt-0"></i> #}
+			New Category
+		</a>
+	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Category Name</th>
+				<th scope="col">Description</th>
+				<th scope="col">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for c in categories %}
+				<tr>
+					<th scope="row">{{ categories[loop.index0].id }}</th>
+					<td>{{ categories[loop.index0].name }}</td>
+					<td>{{ categories[loop.index0].description }}</td>
+					<td>
+						<a class="btn btn-primary" href="{{ path('app_category_edit',{id: categories[loop.index0].id}) }}">Edit</a>
+						{# <a class="btn btn-danger" href="{{ path('app_client_delete',{id: categories[loop.index0].id}) }}">Delete</a> #}
+						<a class="btn btn-danger" href="#" onclick="event.preventDefault(); confirm('Are you sure?') && document.getElementById('js-category-delete-form').submit(); " class="btn btn-light">Delete</a>
+						<form id="js-category-delete-form" action="{{ path('app_client_delete',{id: categories[loop.index0].id}) }}" method="post" style="display:none;">
+							<input type="hidden" name="csrf_token" value="{{ csrf_token('client_deletion'~ categories[loop.index0].id) }}">
+							<input type="hidden" name="_method" value="DELETE">
+						</form>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+</div>{% endblock %}

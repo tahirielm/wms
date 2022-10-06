@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Edit Delivery #' ~ delivery.id %}
+
+
+{% block body %}
+
+	<div class="row">
+		<div class="col-md-6 mx-auto">
+
+			<h1>
+				Edit Delivery #{{ delivery.id }}</h1>
+
+			{{ form_start(formEditDeliverys)}}
+
+			{{ form_widget(formEditDeliverys)}}
+
+			<input type="submit" value="Edit Delivery" class="btn btn-primary">
+			{{ form_end(formEditDeliverys)}}
+
+		</div>
+	</div>
+
+
+{% endblock %}

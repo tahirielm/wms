@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'New Category' %}
+
+
+{% block body %}
+
+	<div class="row">
+		<div class="col-md-6 mx-auto">
+
+			<h1>
+				Create Category</h1>
+
+			{{ form_start(formCategories)}}
+
+			{{ form_widget(formCategories)}}
+
+			<input type="submit" value="Create Category" class="btn btn-primary">
+			{{ form_end(formCategories)}}
+
+		</div>
+	</div>
+
+
+{% endblock %}

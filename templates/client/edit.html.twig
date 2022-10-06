@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Edit Client #' ~ client.id %}
+
+
+{% block body %}
+
+	<div class="row">
+		<div class="col-md-6 mx-auto">
+
+			<h1>
+				Edit client #{{ client.id }}</h1>
+
+			{{ form_start(formEditClients)}}
+
+			{{ form_widget(formEditClients)}}
+
+			<input type="submit" value="Edit client" class="btn btn-primary">
+			{{ form_end(formEditClients)}}
+
+		</div>
+	</div>
+
+
+{% endblock %}

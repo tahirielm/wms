@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title commande.reference %}
+
+
+{% block body %}
+	<div class="row">
+		<div class="col mx-auto">
+			<article class="bg-white rounded shadow">
+
+				<h2 class="text-center h5 ps-5 pt-3">Order Reference :
+					{{ commande.reference }}</h2>
+				<br>
+				<h3 class="h6 ps-5 pt-3">Date :
+					{{ commande.date|date('Y-m-d') }}</h3>
+				<h3 class="h6 ps-5 pt-3">Supplier :
+					{{ commande.supplier }}
+				</h3>
+				<h3 class="h6 ps-5 pt-3">Products :
+				</h3>
+				{% for p in commande.products %}
+					<h3 class="text-center h6 ps-5 pt-3">
+						{{ p.nameProduct }}
+					</h3>
+				{% endfor %}
+				<div class="ps-3 pb-3">
+					<a href="{{ path('app_commande_edit',{id: commande.id}) }}" class="btn btn-success">Edit</a>
+					<a href="#" onclick="event.preventDefault(); confirm('Are you sure?') && document.getElementById('js-commande-delete-form').submit(); " class="btn btn-danger">Delete</a>
+				</div>
+			</article>
+		</div>
+	</div>
+
+
+	<form id="js-commande-delete-form" action="{{ path('app_commande_delete',{id: commande.id}) }}" method="post" style="display:none;">
+		<input type="hidden" name="csrf_token" value="{{ csrf_token('commande_deletion'~ commande.id) }}">
+		<input type="hidden" name="_method" value="DELETE">
+	</form>
+{% endblock %}

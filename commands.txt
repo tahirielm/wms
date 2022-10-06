@@ -1,0 +1,68 @@
+1- composer create-project symfony/skeleton symfonyapp "6.0.7" ( creation du projet )
+2- composer require symfony/maker-bundle --dev ( pour avoir les commande symfony make..)
+3-composer diagnose ( pour checker si tout marche bien )
+4-composer self-update ( pour faire une mise a jour au composer)
+5-composer require doctrine/annotations ( pour ajouter les annotations pour ajouter les routes automatiquement)
+6- symfony console make:controller nom_controller ( pour creer un controlleur )
+7- composer req twig-bundle   ( pour ajouter les templates )
+8-symfony console     ( pour voir les commandes quand peut faire avec symfony )
+9-composer req orm   ( pour pouvoir utilier les entites (orm) )
+10-symfony console make:entity ( pour creer une entite )
+11- symfony console doctrine:database:create
+12- symfony console doctrine:database:drop --force ( pour supprimer le fichier)
+13- symfony console debug:container --parameters ( pour lister tout les params du container )
+14- symfony console make:migration ( pour creer le fichier de migration )
+15- symfony console doctrine:migrations:status ( pour voir le status des migrations )
+16- symfony console doctrine:migrations:migrate ( pour executer la methode up -> creer la table indiquer en cette methode )
+17-symfony console doctrine:migrations:migrate prev ( pour revenir en arriere -> annuler la migration)
+18-composer req profiler --dev ( pour avoir une bar dans le browser pour simplifier la navigation dy symfony)
+19-composer rem profiler --dev ( pour supprimer le profiler )
+20-composer req debug --dev ( pour installer le debuger )
+21-symfony console cache:clear ( pour vider le cache )
+22- truncate num_de_la_table; ( pour reinitialiser le compteur de l'id et supression de la table)
+23-symfony console debug:router ( pour voir l'ensemble des routes)
+24-composer req form ( pour utiliser le FormBuilder() )
+25- symfony console doctrine:query:sql "delete from pins" ( pour executer une query avec symfony )
+26- composer req annotation ( pour pouvoir injecter l'entite en se basant sur l'authentifiant )
+27- symfony serve -d  ( to run in the server en arriere plan )
+28-symfony local:server:stop ( to stop the server )
+29- composer req theofidry/psysh-bundle --dev ( pour avoir la console psysh )
+30- symfony console psysh ( pour lancer la console )
+31-symfony console make:twig- ( pour creer une fonction au sein de twig )
+32- symfony console make:form ( pour creer un formulaire type qui se repete beaucoup)
+33- symfony console debug:router ( pour voir tout les routes avec leur method )
+34-composer require symfony/asset ( pour utiliser la fct asset() en twig pour linker le css avec le twig)
+35- npm run watch ( pour charger les fichier bootstrap en nodejs )
+36- (to upload pics we can use vich uploader bundle ) 
+37- symfony console make:user
+38- symfony console security:hash-password ( pour hasher un mdp )
+39- Pour ajouter une cle etrangere :
+                symfony console make:entity Post
+                >nom_foreignKey
+                >relation
+                >User
+                >ManyToOne
+                >no ( chaque post doit avoir un user )
+                >yes ( pour lister tout les posts d'un utilisateur)
+                > [click entree]
+                >yes ( lorsqu'un user est supprimer, on supprime tout les post associe)
+
+40- symfony console make:auth -> LoginFormAuthenticator
+----- securite en symfony -----
+   -authentification ( qui vous etes ) : firewalls
+   -autorisation (droit pour effectuer diff action)
+41- symfony console make:registration-form  -> 
+yes 
+-> send_email ->no
+-> connect_directly -> yes
+
+
+symfony console make:entity
+// ADD TIME STUFF IN ENTITY
+   use App\Entity\Traits\Timestampable;
+   #[ORM\HasLifecycleCallbacks]
+   use Timestampable;
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
+symfony console make:controller
+symfony console make:form

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'New Delivery Order' %}
+
+
+{% block body %}
+
+	<div class="row">
+		<div class="col-md-6 mx-auto">
+
+			<h1>
+				Create Delivery Order</h1>
+
+			{{ form_start(formDeliveryOrders)}}
+
+			{{ form_widget(formDeliveryOrders)}}
+
+			<input type="submit" value="Create Delivery Order" class="btn btn-primary">
+			{{ form_end(formDeliveryOrders)}}
+
+		</div>
+	</div>
+
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Edit Inventory #' ~ inventory.id %}
+
+
+{% block body %}
+
+	<div class="row">
+		<div class="col-md-6 mx-auto">
+
+			<h1>
+				Edit Inventory #{{ inventory.id }}</h1>
+
+			{{ form_start(formEditInventorys)}}
+
+			{{ form_widget(formEditInventorys)}}
+
+			<input type="submit" value="Edit Inventory" class="btn btn-primary">
+			{{ form_end(formEditInventorys)}}
+
+		</div>
+	</div>
+
+
+{% endblock %}

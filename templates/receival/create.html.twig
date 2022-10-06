@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'New Receival' %}
+
+
+{% block body %}
+
+	<div class="row">
+		<div class="col-md-6 mx-auto">
+
+			<h1>
+				Create Receival</h1>
+
+			{{ form_start(formReceivals)}}
+
+			{{ form_widget(formReceivals)}}
+
+			<input type="submit" value="Create Receival" class="btn btn-primary">
+			{{ form_end(formReceivals)}}
+
+		</div>
+	</div>
+
+
+{% endblock %}

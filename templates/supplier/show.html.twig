@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title supplier.name %}
+
+
+{% block body %}
+	<div class="row">
+		<div class="col mx-auto">
+			<article>
+
+				<article class="bg-white rounded shadow post">
+
+					<h2 class="h5 ps-5 pt-3 text-secondary text-muted">{{ supplier.name }}</h2>
+					<h3 class="h6 ps-5 pt-3 text-secondary text-muted">{{ supplier.adress }}</h3>
+					<h3 class="h6 ps-5 pt-3 text-secondary text-muted">{{ supplier.phone }}</h3>
+					<h3 class="h6 ps-5 pt-3 text-secondary text-muted">{{ supplier.email }}</h3>
+				</div>
+				<div class="ps-3 pb-3">
+					<a href="{{ path('app_supplier_edit',{id: supplier.id}) }}" class="btn btn-light">Edit</a>
+					<a href="#" onclick="event.preventDefault(); confirm('Are you sure?') && document.getElementById('js-supplier-delete-form').submit(); " class="btn btn-light">Delete</a>
+				</div>
+			</article>
+		</div>
+	</div>
+
+
+	<form id="js-supplier-delete-form" action="{{ path('app_supplier_delete',{id: supplier.id}) }}" method="post" style="display:none;">
+		<input type="hidden" name="csrf_token" value="{{ csrf_token('supplier_deletion'~ supplier.id) }}">
+		<input type="hidden" name="_method" value="DELETE">
+	</form>
+{% endblock %}

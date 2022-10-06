@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Warehouse Management System' %}
+
+
+{% block body %}
+
+	<div class="">
+		<h1 class="text-center">Orders</h1>
+		<a
+			class="btn btn-success" style="float:right;" href="{{ path('app_commande_create') }}">
+			{# <i class="fas fa-pencil-alt mt-0"></i> #}
+			New Order
+		</a>
+	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Reference</th>
+				<th scope="col">Order date</th>
+				<th scope="col">Supplier</th>
+				<th scope="col">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for c in commandes %}
+				<tr>
+					<th scope="row">{{ commandes[loop.index0].id }}</th>
+					<td>{{ commandes[loop.index0].reference }}</td>
+					<td>{{ commandes[loop.index0].date|date('Y-m-d') }}</td>
+					<td>{{ commandes[loop.index0].supplier }}</td>
+					<td>
+						<a class="btn btn-success" href="{{ path('app_commande_details',{id: commandes[loop.index0].id}) }}">Details</a>
+						<a class="btn btn-primary" href="{{ path('app_commande_edit',{id: commandes[loop.index0].id}) }}">Edit</a>
+						{# <a class="btn btn-danger" href="{{ path('app_commande_delete',{id: commandes[loop.index0].id}) }}">Delete</a> #}
+						<a class="btn btn-danger" href="#" onclick="event.preventDefault(); confirm('Are you sure?') && document.getElementById('js-commande-delete-form').submit(); " class="btn btn-light">Delete</a>
+						<form id="js-commande-delete-form" action="{{ path('app_commande_delete',{id: commandes[loop.index0].id}) }}" method="post" style="display:none;">
+							<input type="hidden" name="csrf_token" value="{{ csrf_token('commande_deletion'~ commandes[loop.index0].id) }}">
+							<input type="hidden" name="_method" value="DELETE">
+						</form>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+</div>{% endblock %}

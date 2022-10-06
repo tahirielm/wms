@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Warehouse Management System' %}
+
+
+{% block body %}
+
+	<div class="">
+		<h1 class="text-center">Receivals</h1>
+		<a
+			class="btn btn-success" style="float:right;" href="{{ path('app_receival_create') }}">
+			{# <i class="fas fa-pencil-alt mt-0"></i> #}
+			New Receival
+		</a>
+	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Receiving Reference</th>
+				<th scope="col">Order Reference</th>
+				<th scope="col">Receival Date</th>
+				<th scope="col">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for p in receivals %}
+				<tr>
+					<th scope="row">{{ receivals[loop.index0].id }}</th>
+					<td>{{ receivals[loop.index0].reference }}</td>
+					<td>{{ receivals[loop.index0].commande }}</td>
+					<td>{{ receivals[loop.index0].date|date('Y-m-d') }}</td>
+					<td>
+						<a class="btn btn-primary" href="{{ path('app_receival_edit',{id: receivals[loop.index0].id}) }}">Edit</a>
+						{# <a class="btn btn-danger" href="{{ path('app_receival_delete',{id: receivals[loop.index0].id}) }}">Delete</a> #}
+						<a class="btn btn-danger" href="#" onclick="event.preventDefault(); confirm('Are you sure?') && document.getElementById('js-receival-delete-form').submit(); " class="btn btn-light">Delete</a>
+						<form id="js-receival-delete-form" action="{{ path('app_receival_delete',{id: receivals[loop.index0].id}) }}" method="post" style="display:none;">
+							<input type="hidden" name="csrf_token" value="{{ csrf_token('receival_deletion'~ receivals[loop.index0].id) }}">
+							<input type="hidden" name="_method" value="DELETE">
+						</form>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+</div>{% endblock %}

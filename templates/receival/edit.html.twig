@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Edit Receival #' ~ receival.id %}
+
+
+{% block body %}
+
+	<div class="row">
+		<div class="col-md-6 mx-auto">
+
+			<h1>
+				Edit Receival #{{ receival.id }}</h1>
+
+			{{ form_start(formEditReceivals)}}
+
+			{{ form_widget(formEditReceivals)}}
+
+			<input type="submit" value="Edit Receival" class="btn btn-primary">
+			{{ form_end(formEditReceivals)}}
+
+		</div>
+	</div>
+
+
+{% endblock %}

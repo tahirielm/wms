@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'New Client' %}
+
+
+{% block body %}
+
+	<div class="row">
+		<div class="col-md-6 mx-auto">
+
+			<h1>
+				Create Client</h1>
+
+			{{ form_start(formClients)}}
+
+			{{ form_widget(formClients)}}
+
+			<input type="submit" value="Create Client" class="btn btn-primary">
+			{{ form_end(formClients)}}
+
+		</div>
+	</div>
+
+
+{% endblock %}

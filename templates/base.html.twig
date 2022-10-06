@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale}}">
+	<head>
+		<meta charset="UTF-8">
+		<script src="https://kit.fontawesome.com/ebc5a0260c.js" crossorigin="anonymous"></script>
+		<title>
+			{% block title %}Warehouse Management System
+			{% endblock %}
+		</title>
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+
+	</head>
+	<body style="background:lightgray;">
+
+		{{  include('layouts/partials/_flash_message.html.twig') }}
+
+		{{  include('layouts/partials/_nav.html.twig') }}
+		<main role="main" class="container">
+			<div style="display:flex;">
+				<div style="display:table-cell;">
+					{{  include('layouts/partials/_sidebar.html.twig') }}
+				</div>
+				<div style="align-items:stretch; width:100%;"> {% block body %}{% endblock %}
+					</div>
+
+				</div>
+
+			</main>
+
+
+			{{  include('layouts/partials/_footer.html.twig') }}
+			{% block javascipt %}
+				{{ encore_entry_script_tags('app') }}
+			{% endblock %}
+
+		</body>
+	</html>

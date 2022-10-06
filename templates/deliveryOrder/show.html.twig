@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title deliveryorder.reference %}
+
+
+{% block body %}
+	<div class="row">
+		<div class="col mx-auto">
+			<article class="bg-white rounded shadow">
+
+				<h2 class="text-center h5 ps-5 pt-3">Delivery Order Reference :
+					{{ deliveryorder.reference }}</h2>
+				<br>
+				<h3 class="h6 ps-5 pt-3">Date :
+					{{ deliveryorder.date|date('Y-m-d') }}</h3>
+				<h3 class="h6 ps-5 pt-3">Client :
+					{{ deliveryorder.client }}
+				</h3>
+				<h3 class="h6 ps-5 pt-3">Products :
+				</h3>
+				{% for p in deliveryorder.products %}
+					<h3 class="text-center h6 ps-5 pt-3">
+						{{ p.nameProduct }}
+					</h3>
+				{% endfor %}
+				<div class="ps-3 pb-3">
+					<a href="{{ path('app_deliveryorder_edit',{id: deliveryorder.id}) }}" class="btn btn-success">Edit</a>
+					<a href="#" onclick="event.preventDefault(); confirm('Are you sure?') && document.getElementById('js-deliveryorder-delete-form').submit(); " class="btn btn-danger">Delete</a>
+				</div>
+			</article>
+		</div>
+	</div>
+
+
+	<form id="js-deliveryorder-delete-form" action="{{ path('app_deliveryorder_delete',{id: deliveryorder.id}) }}" method="post" style="display:none;">
+		<input type="hidden" name="csrf_token" value="{{ csrf_token('deliveryorder_deletion'~ deliveryorder.id) }}">
+		<input type="hidden" name="_method" value="DELETE">
+	</form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Edit Order #' ~ commande.id %}
+
+
+{% block body %}
+
+	<div class="row">
+		<div class="col-md-6 mx-auto">
+
+			<h1>
+				Edit order #{{ commande.id }}</h1>
+
+			{{ form_start(formEditCommandes)}}
+
+			{{ form_widget(formEditCommandes)}}
+
+			<input type="submit" value="Edit Order" class="btn btn-primary">
+			{{ form_end(formEditCommandes)}}
+
+		</div>
+	</div>
+
+
+{% endblock %}

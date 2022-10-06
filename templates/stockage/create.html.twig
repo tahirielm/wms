@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'New Stockage' %}
+
+
+{% block body %}
+
+	<div class="row">
+		<div class="col-md-6 mx-auto">
+
+			<h1>
+				Create Stockage</h1>
+
+			{{ form_start(formStockages)}}
+			{{ form_row(formStockages.reference) }}
+			{{ form_row(formStockages.receival) }}
+			<form>
+				<div class="row">
+					<div class="col">
+						{{ form_row(formStockages.aisle) }}
+					</div>
+					<div class="col">
+						{{ form_row(formStockages.shelf) }}
+					</div>
+					<div class="col">
+						{{ form_row(formStockages.level) }}
+					</div>
+					<div class="col">
+						{{ form_row(formStockages.place) }}
+					</div>
+				</div>
+			</form>
+
+			<input type="submit" value="Create Stockage" class="btn btn-primary">
+			{{ form_end(formStockages)}}
+
+		</div>
+	</div>
+
+
+{% endblock %}
